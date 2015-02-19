@@ -5,3 +5,4 @@ node_modules/
 .DS_Store
 config/dev.yaml
 newrelic_agent.log
+npm-debug.log
