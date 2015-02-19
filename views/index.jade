@@ -5,9 +5,8 @@ block content
     .post-photo
       img
     .post-text
-      | {{tweet}}
     .post-trigger
-      {{trigger}}
+    .post-location
 
   .stats
 
@@ -15,16 +14,13 @@ block content
     $( document ).ready(function() {
       var socket = io();
 
-      $(".post-photo > img").attr('src', "https://raw.githubusercontent.com/TweetAJoke/TweetAJokeBot/master/medias/TheDamfr.jpg");
-      $(".post-text").html("@haroldzouari The quickest way to a man's heart is with @TheDamfr ' fist. #MentorFacts #5WLille");
-      $(".post-trigger").html("@haroldzouari");
-
       socket.on('tweet', function(response){
         $(".post").fadeOut(1000, function() {
             $(".post-photo > img").attr('src', '');
-            $(".post-photo > img").attr('src', response.image);
+            $(".post-photo > img").attr('src', response.user_image);
             $(".post-text").html(response.message);
-            $(".post-trigger").html("@SWLilleDreamTeam");
+            $(".post-trigger").html(response.user_name);
+            $(".post-location").html(response.place);
             $(".post").fadeIn(1000);
           });
       });

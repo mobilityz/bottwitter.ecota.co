@@ -74,6 +74,12 @@ var stream = T.stream('statuses/filter', { locations: sanFrancisco });
 
 stream.on('tweet', function (tweet) {
   console.log(tweet);
+  io.emit('tweet', {
+    message: tweet.text,
+		user_name: tweet.user.name,
+		user_image: tweet.user.profile_image_url,
+		place: tweet.place.full_name
+	});
 });
 
 stream.on('error', function(error) {

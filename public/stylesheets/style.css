@@ -55,3 +55,10 @@ h1 {
   text-align: right;
   font-size: 30px;
 }
+
+.post-location {
+  color: gray;
+  padding-top: 20px;
+  text-align: right;
+  font-size: 30px;
+}
