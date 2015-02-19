@@ -65,9 +65,17 @@ twitter = new twitter({
 });
 
 //Stream
-var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ];
+var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
+var lilleFlandre = [' 50.38976', '3.4927', '50.381140','3.42631' ]
+var lilleEurope = ['3.42615', '50.382542', ' 3.44125', ' 50.381597']
+var gareDuNord = ['2.211300', '48.524839', '2.212747', '48.525710']
+
 var stream = T.stream('statuses/filter', { locations: sanFrancisco });
 
 stream.on('tweet', function (tweet) {
   console.log(tweet);
+});
+
+stream.on('error', function(error) {
+	console.log(error)
 });

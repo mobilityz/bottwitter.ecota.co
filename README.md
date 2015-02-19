@@ -3,4 +3,7 @@
 ## Getting stated
 
   npm install
+  
+Add env variables inside a `.env` file.
+
   npm start
