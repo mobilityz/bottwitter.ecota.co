@@ -66,19 +66,20 @@ twitter = new twitter({
 
 //Stream
 var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
-var lilleFlandre = [' 50.38976', '3.4927', '50.381140','3.42631' ]
-var lilleEurope = ['3.42615', '50.382542', ' 3.44125', ' 50.381597']
-var gareDuNord = ['2.211300', '48.524839', '2.212747', '48.525710']
+var lilleFlandre = ['3.069242','50.636045', '3.073975', '50.636500' ]
+var gareDuNord = ['2.353612', '48.880108', '2.357630', '48.882527' ]
 
-var stream = T.stream('statuses/filter', { locations: sanFrancisco });
+var stream = T.stream('statuses/filter', { locations: lilleFlandre });
 
 stream.on('tweet', function (tweet) {
   console.log(tweet);
+  
   io.emit('tweet', {
     message: tweet.text,
     user_name: tweet.user.name,
     user_image: tweet.user.profile_image_url,
-    place: tweet.place.full_name
+    place: tweet.place.full_name,
+    geoJSON: tweet.coordinates
   });
 });
 
