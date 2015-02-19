@@ -1,0 +1,85 @@
+/////////////////////////
+// Twitt Bot           //
+////////////////////////
+
+var Twit = require('twit'),
+config = require('config'),
+async = require('async');
+
+var twitter = require('./lib/twitter'),
+kitten = require('./lib/kitten'),
+thecat = require('./lib/thecat'),
+chucknorris = require('./lib/chucknorris');
+
+var T = new Twit(config.get("Twitter")),
+twitter = new twitter({
+  consumer_key: config.get("Twitter.consumer_key"),
+  consumer_secret: config.get("Twitter.consumer_secret"),
+  token: config.get("Twitter.access_token"),
+  token_secret: config.get("Twitter.access_token_secret")
+});
+
+var stream = T.stream('statuses/filter', { track: '#swlille' });
+
+stream.on('tweet', function (tweet) {
+  // Skip RTs & our account
+  if (tweet.retweeted_status || config.bot.account === tweet.user.screen_name) {
+    return true;
+  }
+
+  // Easter egg
+  if (tweet.user.default_profile_image) {
+    var tweet_content = '@' + tweet.user.screen_name + ' Coucou tête d\'oeuf !!! #swLille';
+    twitter.post(tweet_content, null, tweet.id_str, function (error, response, body) {
+      if (error) {
+        console.error(error);
+      }
+      else {
+        console.log(tweet_content);
+      }
+    });
+  }
+
+  // Mentions
+  var users = [];
+  for (var i = 0; i < tweet.entities.user_mentions.length; i++) {
+    users.push(tweet.entities.user_mentions[i].screen_name);
+  }
+
+  var tweet_content;
+  async.waterfall([
+    function (callback) {
+      if (Math.round(Math.random() * 10) % 2 ||
+        tweet.text.toLowerCase().indexOf('#kitten') >= 0 ||
+        tweet.text.toLowerCase().indexOf('#chaton') >= 0 ||
+        tweet.text.toLowerCase().indexOf('#thecat') >= 0 ||
+        tweet.text.toLowerCase().indexOf('#cat') >= 0||
+        tweet.text.toLowerCase().indexOf('#chatoune') >= 0) {
+          if(Math.round(Math.random() * 10) % 2 ||
+            tweet.text.toLowerCase().indexOf('#thecat') >= 0 ||
+            tweet.text.toLowerCase().indexOf('#cat') >= 0||
+            tweet.text.toLowerCase().indexOf('#chatoune') >= 0) {
+              thecat(users, callback);
+          } else {
+              kitten(users, callback);
+          }
+        } else {
+          chucknorris(callback);
+        }
+      },
+      function (content, image, callback) {
+        tweet_content = '@' + tweet.user.screen_name + ' ' + content + ' #5WLille';
+        twitter.post(tweet_content, image, tweet.id_str, callback);
+        io.emit('tweet', {
+          image: image,
+          message: tweet_content
+      });
+    }
+  ], function (error, response, body) {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(tweet_content);
+    }
+  });
+});
