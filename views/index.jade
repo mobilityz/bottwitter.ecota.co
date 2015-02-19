@@ -26,7 +26,7 @@ block content
             $(".post-location").html(response.place);
             $(".post").fadeIn(1000);
             if (response.geoJSON != null) {
-                var point = L.mapbox.featureLayer().addTo(map);
+                var point = L.mapbox.featureLayer().addTo(map).bindPopup(response.message);
                 point.setGeoJSON(response.geoJSON)
             }
           });
