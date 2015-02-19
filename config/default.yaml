@@ -1,0 +1,35 @@
+giphy:
+  # Public beta key from https://github.com/giphy/GiphyAPI#parameters
+  api_key: dc6zaTOxFJmzC
+
+chucknorris:
+  mentors:
+    - '@cyril_lakech'
+    - '@yannirbah'
+    - '@gierschv'
+    - '@Todiann'
+    - '@TheDamfr'
+    - '@Judith_Kh'
+    - '@mthiriez'
+    - '@Lucie_Castier'
+
+  pictures:
+    TheDamfr: https://raw.githubusercontent.com/TweetAJoke/TweetAJokeBot/master/medias/TheDamfr.jpg
+    yannirbah: https://raw.githubusercontent.com/TweetAJoke/TweetAJokeBot/master/medias/yannirbah.jpg
+    cyril_lakech: https://raw.githubusercontent.com/TweetAJoke/TweetAJokeBot/master/medias/cyril_lakech.jpg
+    mthiriez: https://raw.githubusercontent.com/TweetAJoke/TweetAJokeBot/master/medias/mthiriez.jpg
+    gierschv: https://raw.githubusercontent.com/TweetAJoke/TweetAJokeBot/master/medias/gierschv.jpg
+    Todiann: https://raw.githubusercontent.com/TweetAJoke/TweetAJokeBot/master/medias/Todiann.jpg
+    Lucie_Castier: https://raw.githubusercontent.com/TweetAJoke/TweetAJokeBot/master/medias/Lucie_Castier.jpg
+
+kitten:
+  messages:
+    - Meouu~~
+    - Maaaaaaaouuuu!
+    - Meouw... grrr
+    - Mewouuuu!
+    - Grrrr..... meoouuuuuuu!
+    - Gr.....rrrrr!
+
+bot:
+  account: C4tling

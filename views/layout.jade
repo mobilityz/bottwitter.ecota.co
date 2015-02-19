@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title= TweetAJoke
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js")
+    script(type="text/javascript" src="javascripts/socket.io.js")
+
+  body
+    header.header
+
+    .content.container
+      h1 TweetAJoke
+      block content
+
+    block javascripts

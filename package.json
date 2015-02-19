@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "A bot for EcoTa.co",
   "main": "index.js",
-  "author": "Benjamin Digeon",
+  "author": "Benjamin Digeon <benjamin.digeon@ecota.co>",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "async": "~0.9.0",
     "body-parser": "^1.9.3",
