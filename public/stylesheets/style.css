@@ -53,6 +53,22 @@ h1 {
   text-align: right;
   font-size: 30px;
 }
+.post-popup .post-photo > img {
+  border-radius: 50px;
+  width: 50px;
+}
+.post-popup .post-text {
+  padding-top: 5px;
+  font-size: 14px;
+}
+.post-popup .post-trigger {
+  padding-top: 5px;
+  font-size: 14px;
+}
+.post-popup .post-location {
+  padding-top: 5px;
+  font-size: 12px;
+}
 
 .map { 
   position:absolute; 

@@ -26,8 +26,9 @@ block content
             $(".post-location").html(response.place);
             $(".post").fadeIn(1000);
             if (response.geoJSON != null) {
-                var point = L.mapbox.featureLayer().addTo(map).bindPopup(response.message);
-                point.setGeoJSON(response.geoJSON)
+                var point = L.mapbox.featureLayer().addTo(map).bindPopup("<div class='post-popup'><div class='post-photo'><img src='" + response.user_image + "' /></div><div class='post-text'>" + response.message + "</div><div class='post-trigger'>" + response.user_name + "</div><div class='post-location'>" + response.place + "</div></div>");
+                point.setGeoJSON(response.geoJSON);
+                map.setView([response.geoJSON.coordinates[1], response.geoJSON.coordinates[0]], 9);
             }
           });
       });

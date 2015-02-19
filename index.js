@@ -65,14 +65,15 @@ twitter = new twitter({
 });
 
 //Stream
-var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
-var lilleFlandre = ['3.069242','50.636045', '3.073975', '50.636500' ]
-var gareDuNord = ['2.353612', '48.880108', '2.357630', '48.882527' ]
+var lilleFlandre = ['3.069242','50.636045', '3.073975', '50.636500' ],
+    lilleEurope = ['3.069242','50.636045', '3.073975', '50.636500' ],
+    aeroportLesquin = ['3.0850982666015625','50.55952368675604', '3.1238937377929688', '50.57522461569038' ],
+    gareDuNord = ['2.353612', '48.880108', '2.357630', '48.882527' ];
 
-var stream = T.stream('statuses/filter', { locations: lilleFlandre });
+var stream = T.stream('statuses/filter', { locations: [lilleFlandre, aeroportLesquin, gareDuNord] });
 
 stream.on('tweet', function (tweet) {
-  console.log(tweet);
+  //console.log(tweet);
   
   io.emit('tweet', {
     message: tweet.text,
