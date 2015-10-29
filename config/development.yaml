@@ -1,0 +1,7 @@
+Twitter:
+  consumer_key: 'XJ5e7htRw7PnXBfZ2yEbQd5cy'
+  consumer_secret: 'WsFKQqKx4DxAK2zLKr4JUXYvI30CO12TL8BYx64mmP7AlK1v9z'
+  access_token: '3044828507-3fobWiS3ykN9MzIpTdYGnl7YtlAPthbtJNpRlkh'
+  access_token_secret: 'shnXDqU3dyUmvqqo9TztrtQqmz7MoYdNOM1AJNSwfBWWu'
+  bot:
+    account: "TWITTER_ACCOUNT"

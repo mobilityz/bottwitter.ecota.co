@@ -41,7 +41,7 @@ app.get('/', function(req, res) {
 // Fire up the web server
 var port = Number(process.env.PORT || 3000);
 var server = http.listen(port, function() {
-  console.log("TweetAJoke started and listening on port " + port);
+  console.log("BotTwitter started and listening on port " + port);
 });
 
 /////////////////////////
@@ -75,7 +75,15 @@ var stream = T.stream('statuses/filter', { locations: [lilleFlandre, aeroportLes
 stream.on('tweet', function (tweet) {
   
   //Partern matching (Gare)
-  if (/gare/i.test(tweet.text)) {
+  if (/[gG]are/g.test(tweet.text)) {
+    io.emit('tweet', {
+      message: tweet.text,
+      user_name: tweet.user.name,
+      user_image: tweet.user.profile_image_url,
+      place: tweet.place.full_name,
+      geoJSON: tweet.coordinates
+    });
+  } else if (/[aA][ée]+roport/i.test(tweet.text)) {
     io.emit('tweet', {
       message: tweet.text,
       user_name: tweet.user.name,
@@ -85,15 +93,15 @@ stream.on('tweet', function (tweet) {
     });
   } else if (tweet.coordinates != null) {
     
-    var bb = {
+    /*var bb = {
       ix:3.069242,
       iy:50.636045, 
       ax:3.073975, 
       ay:50.636500
-    }
+    }*/
     // bb is the bounding box, (ix,iy) are its top-left coordinates, 
     // and (ax,ay) its bottom-right coordinates
-    if(bb.ix <= tweet.coordinates[0] && tweet.coordinates[0] <= bb.ax && bb.iy <= tweet.coordinates[1] && tweet.coordinates[0] <= bb.ay ) {
+   // if(bb.ix <= tweet.coordinates[0] && tweet.coordinates[0] <= bb.ax && bb.iy <= tweet.coordinates[1] && tweet.coordinates[0] <= bb.ay ) {
       io.emit('tweet', {
         message: tweet.text,
         user_name: tweet.user.name,
@@ -101,7 +109,7 @@ stream.on('tweet', function (tweet) {
         place: tweet.place.full_name,
         geoJSON: tweet.coordinates
       });
-    }
+    //}
   }  
 });
 
