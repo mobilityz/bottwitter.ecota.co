@@ -3,24 +3,24 @@
   "version": "0.0.1",
   "description": "A bot for EcoTa.co",
   "main": "index.js",
-  "author": "Benjamin Digeon <benjamin.digeon@ecota.co>",
+  "author": "Maxime Lenne, Benjamin Digeon",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "async": "~0.9.0",
+    "async": "^2.6.1",
     "body-parser": "^1.9.3",
-    "config": "~1.8.1",
-    "dotenv": "^0.4.0",
+    "config": "^2.0.1",
+    "dotenv": "^6.1.0",
     "express": "^4.10.2",
-    "html-entities": "~1.1.1",
+    "html-entities": "^1.2.1",
     "jade": "^1.7.0",
     "js": "^0.1.0",
-    "js-yaml": "~3.2.3",
-    "newrelic": "^1.13.4",
-    "path": "^0.4.9",
-    "request": "~2.48.0",
-    "socket.io": "^1.2.1",
-    "twit": "~1.1.18"
+    "js-yaml": "^3.12.0",
+    "newrelic": "^4.9.0",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "socket.io": "^2.1.1",
+    "twit": "^2.2.11"
   }
 }

@@ -1,19 +1,20 @@
 doctype html
 html
   head
-    title= 'EcoTaco Bot'
+    title= 'Geolocalised tweet'
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css')
 
     script(type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js")
-    script(type="text/javascript" src="javascripts/socket.io.js")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js")
     script(type="text/javascript" src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js')
 
   body
     header.header
 
     .content.container
-      h1 EcoTa.co Bot
+      h1 Geolocalised tweet
       block content
 
     block javascripts
+      script('src'= '/javascripts/index.js')
